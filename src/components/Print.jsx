@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ArrowKeysReact from 'arrow-keys-react'
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 
 
   
@@ -8,6 +10,7 @@ import ArrowKeysReact from 'arrow-keys-react'
         data: false,
         direction: false,
         message: false,
+        img: false
       }
 
     fetchData = async () => {
@@ -56,9 +59,14 @@ import ArrowKeysReact from 'arrow-keys-react'
         const data = await this.fetchMove()
         const json = await data
         json.text().then((text) => {
-            text = JSON.parse(text)                          
+            text = JSON.parse(text) 
+            console.log(text)                         
             if (text['state'] === 'active') {
                 this.setState({message: text['state-result']})
+                this.printData()                
+            }
+            if (text['state'] === 'won') {
+                this.setState({message: text['state-result'],img: true})
                 this.printData()                
             }
         })
@@ -81,7 +89,31 @@ import ArrowKeysReact from 'arrow-keys-react'
         down: () => {
             this.setState({direction: 'south'},() => this.printMove())   
         }
-    })    
+    })  
+
+    
+    let data = false
+    if (this.state.img) {
+        data =  (
+            <div id='map'>
+                <img 
+                    style={{maxWidth: '60%'}} 
+                    src='https://ponychallenge.trustpilot.com/eW91X3NhdmVkX3RoZV9wb255.jpg' 
+                />
+                <div>
+                    <Button raised color="primary">
+                        Play again
+                    </Button>
+                </div>
+            </div>
+        )
+    } else if (this.state.data) {
+        data = (
+            <div id='map' {...ArrowKeysReact.events} tabIndex="1">
+                <pre>{this.state.data}</pre>
+            </div>
+        )
+    }
 
     return (
         <div className="App">
@@ -89,11 +121,11 @@ import ArrowKeysReact from 'arrow-keys-react'
           Print
           </button>
           <div id='message'>
-            {this.state.message}
+            <Typography type="headline" component="h3">
+                {this.state.message}
+            </Typography>
           </div>
-          <div id='map' {...ArrowKeysReact.events} tabIndex="1">
-            <pre>{this.state.data}</pre>
-          </div>
+          {data}
         </div>
       );
     }
