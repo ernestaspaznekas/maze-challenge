@@ -22,6 +22,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React Maze</h1>
         </header>
+        <i/>
         <PrintData changeId={this.changeId} />
         <Print mazeId={this.state.mazeId} />
       </div>
