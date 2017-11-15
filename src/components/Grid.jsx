@@ -6,8 +6,6 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Print from './Print'
 
-
-
 const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: 16,
@@ -21,9 +19,7 @@ class Grid extends Component {
       'mazeId': false,
     }
   
-    changeId = (mazeId) => {
-      console.log(mazeId)
-  
+    changeId = (mazeId) => {  
       this.setState({'mazeId': mazeId})
     }
   
