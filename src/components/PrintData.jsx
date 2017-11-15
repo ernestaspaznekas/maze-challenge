@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'material-ui/Button'
 
   
   class PrintData extends Component {
@@ -40,11 +41,10 @@ import React, { Component } from 'react';
     render() {
       return (
         <div className="App">
-          <button onClick={this.printData} >
-            Get ID    
-          </button>
           <div>
-            {this.state.id}
+              <Button raised color="primary" onClick={this.printData}>
+                  Play game
+              </Button>
           </div>
           {/*Width<input id='maze-wigth' />
           Height<input id='maze-heigth' />

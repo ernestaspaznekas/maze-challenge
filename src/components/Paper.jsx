@@ -4,9 +4,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
 import Print from './Print'
-import PrintData from './PrintData'
+//import PrintData from './PrintData'
 
 
 
@@ -24,24 +23,18 @@ class PaperSheet extends Component {
     }
   
     changeId = (mazeId) => {
-      //console.log(mazeId)
+      console.log(mazeId)
   
       this.setState({'mazeId': mazeId})
     }
   
     render() {
-        console.log(this.props)
         const classes = this.props;
         return (
           <div>
             <Paper className={classes.root} elevation={4}>
-              <Typography type="headline" component="h3">
-                <PrintData changeId={this.changeId} />
-
-              </Typography>
-              <Typography type="body1" component="p">
-                <Print mazeId={this.state.mazeId} />
-              </Typography>
+              {/*<PrintData changeId={this.changeId} />*/}
+              <Print mazeId={this.state.mazeId} />
             </Paper>
           </div>
         )
