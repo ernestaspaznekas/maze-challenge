@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Print from './Print'
-//import PrintData from './PrintData'
 
 
 
@@ -17,7 +16,7 @@ const styles = theme => ({
   }),
 });
 
-class PaperSheet extends Component {
+class Grid extends Component {
     state = {
       'mazeId': false,
     }
@@ -33,7 +32,6 @@ class PaperSheet extends Component {
         return (
           <div>
             <Paper className={classes.root} elevation={4}>
-              {/*<PrintData changeId={this.changeId} />*/}
               <Print mazeId={this.state.mazeId} />
             </Paper>
           </div>
@@ -42,8 +40,8 @@ class PaperSheet extends Component {
   }
   
 
-PaperSheet.propTypes = {
+Grid.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(PaperSheet);
+export default withStyles(styles)(Grid)

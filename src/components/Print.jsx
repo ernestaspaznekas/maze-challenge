@@ -92,7 +92,7 @@ import Button from 'material-ui/Button'
         const json = await data
         json.text().then((text) => {
             text = JSON.parse(text) 
-            console.log(text)                         
+            //console.log(text)                         
             if (text['state'] === 'active') {
                 this.setState({message: text['state-result']})
                 this.printData()                
@@ -147,7 +147,7 @@ import Button from 'material-ui/Button'
         )
     }
 
-    console.log(this.state)   
+    //console.log(this.state)   
     let buttonText = 'Play'
     if (this.state.img) {
         buttonText = 'Play Again'
